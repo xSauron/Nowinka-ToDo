@@ -111,7 +111,7 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         val clause = "$ID = ?"
         val argument = arrayOf(Event.event_id.toString())
 
-        val updatedCount = database.update(TABLE, values, clause, argument)
+        database.update(TABLE, values, clause, argument)
         database.close()
     }
 }

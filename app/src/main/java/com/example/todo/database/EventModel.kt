@@ -1,7 +1,15 @@
 package com.example.todo.database
 
-data class EventModel (
-    var event_id: Int,
+object EventIdGenerator {
+    private var lastEventId = 0
+    fun generateEventId(): Int {
+        lastEventId++
+        return lastEventId
+    }
+}
+
+data class EventModel(
+    var event_id: Int = EventIdGenerator.generateEventId(),
     var event_title: String,
     var event_desc: String,
     var event_date: Int,
