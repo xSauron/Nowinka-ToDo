@@ -90,13 +90,14 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         return events
     }
 
-    fun removeEvent(ID: Int) {
+    fun removeEvent(id: Int): Int{
         val database = this.readableDatabase
-        val clause = "$ID = ?"
-        val argument = arrayOf(ID.toString())
+        val content = ContentValues()
+        content.put(ID,id)
 
-        database.delete(TABLE, clause, argument)
+        val event = database.delete(TABLE, "event_id=$id",null)
         database.close()
+        return event
     }
 
     fun updateEvent(Event: EventModel) {

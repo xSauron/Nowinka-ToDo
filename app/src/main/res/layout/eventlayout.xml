@@ -16,36 +16,42 @@
             android:id="@+id/tvId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ID">
+            android:text="ID"
+            android:textSize="16dp">
         </TextView>
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title">
+            android:text="Title"
+            android:textSize="16dp">
         </TextView>
 
         <TextView
             android:id="@+id/tvDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description">
+            android:text="Description"
+            android:textSize="16dp">
         </TextView>
 
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date">
+            android:text="Date"
+            android:textSize="16dp">
         </TextView>
 
         <TextView
             android:id="@+id/tvPrio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Priority">
+            android:text="Priority"
+            android:textSize="16dp">
         </TextView>
+
     </LinearLayout>
 
     <LinearLayout

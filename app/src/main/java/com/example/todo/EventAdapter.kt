@@ -10,9 +10,14 @@ import com.example.todo.database.EventModel
 
 class EventAdapter : RecyclerView.Adapter<EventAdapter.EventHolder>(){
     private var eventlist: ArrayList<EventModel> = ArrayList()
+    private var OnClickDelete: ((EventModel) -> Unit)? = null
 
     fun addEvent(events: ArrayList<EventModel>) {
         this.eventlist = events
+        notifyDataSetChanged()}
+
+    fun setOnClickDelete(callback: (EventModel)->Unit){
+        this.OnClickDelete = callback
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = EventHolder(
@@ -22,6 +27,7 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.EventHolder>(){
     override fun onBindViewHolder(holder: EventHolder, position: Int) {
         val event = eventlist[position]
         holder.bindView(event)
+        holder.btnDelete.setOnClickListener{OnClickDelete?.invoke(event)}
     }
 
     override fun getItemCount(): Int {
@@ -34,8 +40,8 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.EventHolder>(){
         private var desc = view.findViewById<TextView>(R.id.tvDesc)
         private var date = view.findViewById<TextView>(R.id.tvDate)
         private var prio = view.findViewById<TextView>(R.id.tvPrio)
-        private var btnDelete = view.findViewById<Button>(R.id.btnDelete)
-        private var btnEdit = view.findViewById<Button>(R.id.btnEdit)
+        var btnDelete = view.findViewById<Button>(R.id.btnDelete)
+        var btnEdit = view.findViewById<Button>(R.id.btnEdit)
 
         fun bindView(std:EventModel){
             id.text = std.event_id.toString()

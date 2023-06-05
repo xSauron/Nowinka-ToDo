@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.database.SQLHelper
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,AddEvent::class.java)
             startActivity(intent)
         }
+
+        adapter?.setOnClickDelete { deleteEvent(it.event_id) }
     }
 
     private fun getEvents(){
@@ -44,5 +47,21 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = EventAdapter()
         recyclerView.adapter = adapter
+    }
+
+    private fun deleteEvent(event_id: Int){
+        if(event_id == null) return
+
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Czy napewno chcesz usunąć to wydarzenie?")
+        builder.setCancelable(true)
+        builder.setNegativeButton("Nie") {dialog, _ -> dialog.dismiss()}
+        builder.setPositiveButton("Tak") {dialog, _ ->
+            SQLHelper.removeEvent(event_id)
+            getEvents();
+            dialog.dismiss()}
+
+        val alert = builder.create()
+        alert.show()
     }
 }

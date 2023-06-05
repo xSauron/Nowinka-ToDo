@@ -27,9 +27,6 @@
         <activity
             android:name=".EditEvent"
             android:exported="true"/>
-        <activity
-            android:name=".RemoveEvent"
-            android:exported="true"/>
     </application>
 
 </manifest>
