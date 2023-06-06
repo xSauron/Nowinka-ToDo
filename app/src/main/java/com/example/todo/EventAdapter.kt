@@ -1,5 +1,6 @@
 package com.example.todo
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +11,20 @@ import com.example.todo.database.EventModel
 
 class EventAdapter : RecyclerView.Adapter<EventAdapter.EventHolder>(){
     private var eventlist: ArrayList<EventModel> = ArrayList()
-    private var OnClickDelete: ((EventModel) -> Unit)? = null
+    private var onClickDelete: ((EventModel) -> Unit)? = null
+    private var onClickEdit: ((EventModel) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addEvent(events: ArrayList<EventModel>) {
         this.eventlist = events
         notifyDataSetChanged()}
 
     fun setOnClickDelete(callback: (EventModel)->Unit){
-        this.OnClickDelete = callback
+        this.onClickDelete = callback
+    }
+
+    fun setOnClickEdit(callback: (EventModel)->Unit){
+        this.onClickEdit = callback
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = EventHolder(
@@ -27,21 +34,22 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.EventHolder>(){
     override fun onBindViewHolder(holder: EventHolder, position: Int) {
         val event = eventlist[position]
         holder.bindView(event)
-        holder.btnDelete.setOnClickListener{OnClickDelete?.invoke(event)}
+        holder.btnDelete.setOnClickListener{onClickDelete?.invoke(event)}
+        holder.btnEdit.setOnClickListener{onClickEdit?.invoke(event)}
     }
 
     override fun getItemCount(): Int {
         return eventlist.size
     }
 
-    class EventHolder(var view: View): RecyclerView.ViewHolder(view){
+    class EventHolder(view: View): RecyclerView.ViewHolder(view){
         private var id = view.findViewById<TextView>(R.id.tvId)
         private var title = view.findViewById<TextView>(R.id.tvTitle)
         private var desc = view.findViewById<TextView>(R.id.tvDesc)
         private var date = view.findViewById<TextView>(R.id.tvDate)
         private var prio = view.findViewById<TextView>(R.id.tvPrio)
-        var btnDelete = view.findViewById<Button>(R.id.btnDelete)
-        var btnEdit = view.findViewById<Button>(R.id.btnEdit)
+        var btnDelete: Button = view.findViewById(R.id.btnDelete)
+        var btnEdit: Button = view.findViewById(R.id.btnEdit)
 
         fun bindView(std:EventModel){
             id.text = std.event_id.toString()

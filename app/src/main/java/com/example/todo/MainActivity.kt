@@ -12,7 +12,7 @@ import com.example.todo.database.SQLHelper
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var SQLHelper: SQLHelper
+    private lateinit var sqlHelper: SQLHelper
     private lateinit var recyclerView: RecyclerView
     private var adapter: EventAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         initEvents()
 
-        SQLHelper = SQLHelper(this)
+        sqlHelper = SQLHelper(this)
 
         getEvents()
 
@@ -34,10 +34,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         adapter?.setOnClickDelete { deleteEvent(it.event_id) }
+        adapter?.setOnClickEdit {
+            val intent = Intent(this,EditEvent::class.java)
+            intent.putExtra("id",it.event_id)
+            startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getEvents()
     }
 
     private fun getEvents(){
-        val eventlist = SQLHelper.displayEvents()
+        val eventlist = sqlHelper.displayEvents()
         Log.e("pppp","${eventlist.size}")
 
         adapter?.addEvent(eventlist)
@@ -57,8 +67,8 @@ class MainActivity : AppCompatActivity() {
         builder.setCancelable(true)
         builder.setNegativeButton("Nie") {dialog, _ -> dialog.dismiss()}
         builder.setPositiveButton("Tak") {dialog, _ ->
-            SQLHelper.removeEvent(event_id)
-            getEvents();
+            sqlHelper.removeEvent(event_id)
+            getEvents()
             dialog.dismiss()}
 
         val alert = builder.create()

@@ -19,7 +19,6 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         private const val DESC = "event_desc"
         private const val DATE = "event_date"
         private const val PRIO = "event_prio"
-
     }
 
     override fun onCreate(database: SQLiteDatabase?) {
@@ -47,7 +46,7 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         return insert
     }
 
-    @SuppressLint("Range")
+    @SuppressLint("Range", "Recycle")
     fun displayEvents(): ArrayList<EventModel> {
         val events: ArrayList<EventModel> = ArrayList()
         val query = "SELECT * FROM $TABLE"
@@ -100,7 +99,7 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         return event
     }
 
-    fun updateEvent(Event: EventModel) {
+    fun updateEvent(Event: EventModel): Int {
         val database = this.writableDatabase
 
         val values = ContentValues()
@@ -109,10 +108,46 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         values.put(DATE, Event.event_date)
         values.put(PRIO, Event.event_prio)
 
-        val clause = "$ID = ?"
-        val argument = arrayOf(Event.event_id.toString())
-
-        database.update(TABLE, values, clause, argument)
+        val event = database.update(TABLE, values, "event_id=" + Event.event_id, null)
         database.close()
+        return event
+    }
+
+    @SuppressLint("Range")
+    fun getEvent(eventId: Int): EventModel? {
+        val query = "SELECT * FROM $TABLE WHERE $ID = $eventId"
+        val database = this.readableDatabase
+        val cursor: Cursor?
+
+        try {
+            cursor = database.rawQuery(query, null)
+        } catch (error: Exception) {
+            error.printStackTrace()
+            database.execSQL(query)
+            return null
+        }
+
+        var event: EventModel? = null
+
+        if (cursor.moveToFirst()) {
+            val id = cursor.getInt(cursor.getColumnIndex("event_id"))
+            val title = cursor.getString(cursor.getColumnIndex("event_title"))
+            val desc = cursor.getString(cursor.getColumnIndex("event_desc"))
+            val date = cursor.getInt(cursor.getColumnIndex("event_date"))
+            val prio = cursor.getInt(cursor.getColumnIndex("event_prio"))
+
+            event = EventModel(
+                event_id = id,
+                event_title = title,
+                event_desc = desc,
+                event_date = date,
+                event_prio = prio
+            )
+        }
+
+        cursor.close()
+        database.close()
+
+        return event
     }
 }

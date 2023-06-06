@@ -10,7 +10,7 @@ import com.example.todo.database.EventModel
 import com.example.todo.database.SQLHelper
 
 class AddEvent : AppCompatActivity() {
-    private lateinit var SQLHelper: SQLHelper
+    private lateinit var sqlHelper: SQLHelper
     private lateinit var addButton: Button
     private lateinit var titleEditText: EditText
     private lateinit var descEditText: EditText
@@ -21,9 +21,9 @@ class AddEvent : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_event)
 
-        SQLHelper = SQLHelper(this)
+        sqlHelper = SQLHelper(this)
 
-        addButton = findViewById(R.id.addEventBtn)
+        addButton = findViewById(R.id.editEventBtn)
         titleEditText  = findViewById(R.id.eventAddTitle)
         descEditText  = findViewById(R.id.eventAddDesc)
         dateEditText  = findViewById(R.id.eventAddDate)
@@ -37,7 +37,7 @@ class AddEvent : AppCompatActivity() {
             val prio = prioEditText.text.toString().toIntOrNull() ?: 0
 
             val eventModel = EventModel(event_title = title, event_desc = desc, event_date = date, event_prio = prio)
-            SQLHelper.addEvent(eventModel)
+            sqlHelper.addEvent(eventModel)
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
