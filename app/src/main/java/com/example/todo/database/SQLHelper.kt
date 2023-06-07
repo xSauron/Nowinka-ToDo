@@ -112,7 +112,7 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         val values = ContentValues()
         values.put(TITLE, Event.event_title)
         values.put(DESC, Event.event_desc)
-        values.put(DATE, Event.event_date)
+        values.put(DATE, convertToTimestamp(Event.event_date))
         values.put(PRIO, Event.event_prio)
 
         val event = database.update(TABLE, values, "event_id=" + Event.event_id, null)
