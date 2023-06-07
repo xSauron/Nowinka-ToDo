@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/cardview_shadow_end_color"
+    android:background="@drawable/event_background"
     android:padding="16dp"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:layout_marginBottom="8dp"
+    >
 
     <LinearLayout
         android:layout_width="0dp"
@@ -12,52 +14,122 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvId"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ID"
-            android:textSize="16dp">
-        </TextView>
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvTitle"
+            <TextView
+                android:id="@+id/textId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nr_Wydarzenia: "
+                android:textSize="16sp"
+                android:textStyle="bold">
+            </TextView>
+            <TextView
+                android:id="@+id/tvId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID"
+                android:textSize="16sp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title"
-            android:textSize="16dp">
-        </TextView>
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvDesc"
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tytuł: "
+                android:textSize="16sp"
+                android:textStyle="bold">
+            </TextView>
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:textSize="16sp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:textSize="16dp">
-        </TextView>
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvDate"
+            <TextView
+                android:id="@+id/textDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Opis: "
+                android:textSize="16sp"
+                android:textStyle="bold">
+            </TextView>
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textSize="16sp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date"
-            android:textSize="16dp">
-        </TextView>
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvPrio"
+            <TextView
+                android:id="@+id/textDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data: "
+                android:textSize="16sp"
+                android:textStyle="bold">
+            </TextView>
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="16sp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Priority"
-            android:textSize="16dp">
-        </TextView>
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textPrio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Priorytet: "
+                android:textSize="16sp"
+                android:textStyle="bold">
+            </TextView>
+            <TextView
+                android:id="@+id/tvPrio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Priority"
+                android:textSize="16sp">
+            </TextView>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
 
         <Button
             android:id="@+id/btnDelete"
@@ -72,10 +144,9 @@
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
+            android:layout_gravity="start"
             android:text="Edit"
             android:textAllCaps="false" />
-    </LinearLayout>
 
+    </LinearLayout>
 </LinearLayout>

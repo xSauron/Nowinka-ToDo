@@ -109,13 +109,13 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     fun updateEvent(Event: EventModel): Int {
         val database = this.writableDatabase
 
-        val values = ContentValues()
-        values.put(TITLE, Event.event_title)
-        values.put(DESC, Event.event_desc)
-        values.put(DATE, convertToTimestamp(Event.event_date))
-        values.put(PRIO, Event.event_prio)
+        val data = ContentValues()
+        data.put(TITLE, Event.event_title)
+        data.put(DESC, Event.event_desc)
+        data.put(DATE, convertToTimestamp(Event.event_date))
+        data.put(PRIO, Event.event_prio)
 
-        val event = database.update(TABLE, values, "event_id=" + Event.event_id, null)
+        val event = database.update(TABLE, data, "event_id=" + Event.event_id, null)
         database.close()
         return event
     }
