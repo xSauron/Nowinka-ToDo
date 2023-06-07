@@ -7,6 +7,9 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -39,7 +42,8 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         data.put(ID, std.event_id)
         data.put(TITLE, std.event_title)
         data.put(DESC, std.event_desc)
-        data.put(DATE, std.event_date)
+        data.put(DATE, convertToTimestamp(std.event_date))
+        data.put(PRIO, std.event_prio)
 
         val insert = database.insert(TABLE, null, data)
         database.close()
@@ -64,7 +68,7 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         var id: Int
         var title: String
         var desc: String
-        var date: Int
+        var date: Long
         var prio: Int
 
         if (cursor.moveToFirst()) {
@@ -72,14 +76,17 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 id = cursor.getInt(cursor.getColumnIndex("event_id"))
                 title = cursor.getString(cursor.getColumnIndex("event_title"))
                 desc = cursor.getString(cursor.getColumnIndex("event_desc"))
-                date = cursor.getInt(cursor.getColumnIndex("event_date"))
+                date = cursor.getLong(cursor.getColumnIndex("event_date"))
                 prio = cursor.getInt(cursor.getColumnIndex("event_prio"))
+
+                val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                val formattedDate = dateFormat.format(Date(date))
 
                 val event = EventModel(
                     event_id = id,
                     event_title = title,
                     event_desc = desc,
-                    event_date = date,
+                    event_date = formattedDate,
                     event_prio = prio
                 )
                 events.add(event)
@@ -133,14 +140,17 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             val id = cursor.getInt(cursor.getColumnIndex("event_id"))
             val title = cursor.getString(cursor.getColumnIndex("event_title"))
             val desc = cursor.getString(cursor.getColumnIndex("event_desc"))
-            val date = cursor.getInt(cursor.getColumnIndex("event_date"))
+            val date = cursor.getLong(cursor.getColumnIndex("event_date"))
             val prio = cursor.getInt(cursor.getColumnIndex("event_prio"))
+
+            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            val formattedDate = dateFormat.format(Date(date))
 
             event = EventModel(
                 event_id = id,
                 event_title = title,
                 event_desc = desc,
-                event_date = date,
+                event_date = formattedDate,
                 event_prio = prio
             )
         }
@@ -149,5 +159,11 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         database.close()
 
         return event
+    }
+
+    private fun convertToTimestamp(date: String): Long {
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+        val convertedDate = dateFormat.parse(date)
+        return convertedDate?.time ?: 0
     }
 }

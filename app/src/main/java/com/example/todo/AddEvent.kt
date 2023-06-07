@@ -8,6 +8,8 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todo.database.EventModel
 import com.example.todo.database.SQLHelper
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class AddEvent : AppCompatActivity() {
     private lateinit var sqlHelper: SQLHelper
@@ -16,6 +18,8 @@ class AddEvent : AppCompatActivity() {
     private lateinit var descEditText: EditText
     private lateinit var dateEditText: EditText
     private lateinit var prioEditText: EditText
+
+    private val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +37,8 @@ class AddEvent : AppCompatActivity() {
 
             val title = titleEditText.text.toString()
             val desc = descEditText.text.toString()
-            val date = dateEditText.text.toString().toIntOrNull() ?: 0
+            val dateStr = dateEditText.text.toString()
+            val date = formatDate(dateStr)
             val prio = prioEditText.text.toString().toIntOrNull() ?: 0
 
             val eventModel = EventModel(event_title = title, event_desc = desc, event_date = date, event_prio = prio)
@@ -45,5 +50,10 @@ class AddEvent : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    private fun formatDate(dateStr: String): String {
+        val date = dateFormat.parse(dateStr)
+        return dateFormat.format(date)
     }
 }

@@ -6,6 +6,8 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todo.database.EventModel
 import com.example.todo.database.SQLHelper
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class EditEvent : AppCompatActivity() {
     private lateinit var sqlHelper: SQLHelper
@@ -15,6 +17,8 @@ class EditEvent : AppCompatActivity() {
     private lateinit var dateEditText: EditText
     private lateinit var prioEditText: EditText
     private var eventId: Int = -1
+
+    private val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.edit_event)
@@ -35,7 +39,8 @@ class EditEvent : AppCompatActivity() {
         editButton.setOnClickListener {
             val title = titleEditText.text.toString()
             val desc = descEditText.text.toString()
-            val date = dateEditText.text.toString().toInt()
+            val dateStr = dateEditText.text.toString()
+            val date = formatDate(dateStr)
             val prio = prioEditText.text.toString().toInt()
 
             val updatedEvent = EventModel(event_id = eventId, event_title = title, event_desc = desc, event_date = date, event_prio = prio)
@@ -53,5 +58,10 @@ class EditEvent : AppCompatActivity() {
             dateEditText.setText(event.event_date.toString())
             prioEditText.setText(event.event_prio.toString())
         }
+    }
+
+    private fun formatDate(dateStr: String): String {
+        val date = dateFormat.parse(dateStr)
+        return dateFormat.format(date)
     }
 }
