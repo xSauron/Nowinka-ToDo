@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RatingBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todo.database.EventModel
 import com.example.todo.database.SQLHelper
@@ -17,7 +18,7 @@ class AddEvent : AppCompatActivity() {
     private lateinit var titleEditText: EditText
     private lateinit var descEditText: EditText
     private lateinit var dateEditText: EditText
-    private lateinit var prioEditText: EditText
+    private lateinit var prioRatingBar: RatingBar
 
     private val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
     @SuppressLint("MissingInflatedId")
@@ -31,7 +32,8 @@ class AddEvent : AppCompatActivity() {
         titleEditText  = findViewById(R.id.eventAddTitle)
         descEditText  = findViewById(R.id.eventAddDesc)
         dateEditText  = findViewById(R.id.eventAddDate)
-        prioEditText  = findViewById(R.id.eventAddPrio)
+        prioRatingBar  = findViewById(R.id.eventAddPrio)
+        prioRatingBar.stepSize = 1.0f
 
         addButton.setOnClickListener {
 
@@ -39,7 +41,7 @@ class AddEvent : AppCompatActivity() {
             val desc = descEditText.text.toString()
             val dateStr = dateEditText.text.toString()
             val date = formatDate(dateStr)
-            val prio = prioEditText.text.toString().toIntOrNull() ?: 0
+            val prio = prioRatingBar.rating.toInt()
 
             val eventModel = EventModel(event_title = title, event_desc = desc, event_date = date, event_prio = prio)
             sqlHelper.addEvent(eventModel)

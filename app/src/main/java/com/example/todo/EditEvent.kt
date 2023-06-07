@@ -3,6 +3,7 @@ package com.example.todo
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RatingBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todo.database.EventModel
 import com.example.todo.database.SQLHelper
@@ -15,7 +16,7 @@ class EditEvent : AppCompatActivity() {
     private lateinit var titleEditText: EditText
     private lateinit var descEditText: EditText
     private lateinit var dateEditText: EditText
-    private lateinit var prioEditText: EditText
+    private lateinit var prioRatingBar: RatingBar
     private var eventId: Int = -1
 
     private val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
@@ -29,7 +30,8 @@ class EditEvent : AppCompatActivity() {
         titleEditText = findViewById(R.id.eventAddTitle)
         descEditText = findViewById(R.id.eventAddDesc)
         dateEditText = findViewById(R.id.eventAddDate)
-        prioEditText = findViewById(R.id.eventAddPrio)
+        prioRatingBar = findViewById(R.id.eventAddPrio)
+        prioRatingBar.stepSize = 1.0f
 
         eventId = intent.getIntExtra("id", -1)
 
@@ -41,7 +43,7 @@ class EditEvent : AppCompatActivity() {
             val desc = descEditText.text.toString()
             val dateStr = dateEditText.text.toString()
             val date = formatDate(dateStr)
-            val prio = prioEditText.text.toString().toInt()
+            val prio = prioRatingBar.rating.toInt()
 
             val updatedEvent = EventModel(event_id = eventId, event_title = title, event_desc = desc, event_date = date, event_prio = prio)
             val rowsAffected = sqlHelper.updateEvent(updatedEvent)
@@ -55,8 +57,8 @@ class EditEvent : AppCompatActivity() {
         event?.let {
             titleEditText.setText(event.event_title)
             descEditText.setText(event.event_desc)
-            dateEditText.setText(event.event_date.toString())
-            prioEditText.setText(event.event_prio.toString())
+            dateEditText.setText(event.event_date)
+            prioRatingBar.rating = event.event_prio.toFloat()
         }
     }
 
