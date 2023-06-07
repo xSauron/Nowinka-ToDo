@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -69,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         builder.setPositiveButton("Tak") {dialog, _ ->
             sqlHelper.removeEvent(event_id)
             getEvents()
+            Toast.makeText(this, "Wydarzenie usunięte", Toast.LENGTH_SHORT).show()
             dialog.dismiss()}
 
         val alert = builder.create()

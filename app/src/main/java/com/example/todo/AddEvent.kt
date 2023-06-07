@@ -75,6 +75,8 @@ class AddEvent : AppCompatActivity() {
             val eventModel = EventModel(event_title = title, event_desc = desc, event_date = formatDate(dateStr), event_prio = prio)
             sqlHelper.addEvent(eventModel)
 
+            Toast.makeText(this, "Dodano wydarzenie", Toast.LENGTH_SHORT).show()
+
             finish()
         }
 

@@ -80,7 +80,13 @@ class EditEvent : AppCompatActivity() {
             val updatedEvent = EventModel(event_id = eventId, event_title = title, event_desc = desc, event_date = formatDate(dateStr), event_prio = prio)
             val rowsAffected = sqlHelper.updateEvent(updatedEvent)
 
-            if (rowsAffected > 0) finish()
+
+
+            if (rowsAffected > 0)
+            {
+                Toast.makeText(this, "Zedytowano wydarzenie", Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
 
     }
