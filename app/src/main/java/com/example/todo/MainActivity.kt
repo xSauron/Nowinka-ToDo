@@ -25,6 +25,13 @@ class MainActivity : AppCompatActivity() {
 
         sqlHelper = SQLHelper(this)
         sqlHelper.onCreate(sqlHelper.writableDatabase)
+
+        /*
+        * Po jakiejkolwiek zmianie stróktury bazy danych znależy odkomentować i uruchomić to polecenie, inaczej aplikacja nie będzie działać.
+        * Spowoduje one usunięcie aktualnej bazy danych i pozwoli utworzyć nową.
+        * Po udanym ponownym uruchomieniu należy ją zakomentować
+        *
+         */
         //sqlHelper.onUpgrade(sqlHelper.writableDatabase,0,0);
 
         initEvents()
