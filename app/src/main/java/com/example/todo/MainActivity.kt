@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
         val addEventButton: Button = findViewById(R.id.addEventButton)
         recyclerView = findViewById(R.id.EventDisplay)
 
-        initEvents()
-
         sqlHelper = SQLHelper(this)
+        sqlHelper.onCreate(sqlHelper.writableDatabase);
 
+        initEvents()
         getEvents()
 
         addEventButton.setOnClickListener{
@@ -34,12 +34,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        adapter?.setOnClickDelete { deleteEvent(it.event_id) }
+        adapter?.setOnClickDelete { it.event_id?.let { it1 -> deleteEvent(it1) } }
         adapter?.setOnClickEdit {
             val intent = Intent(this,EditEvent::class.java)
             intent.putExtra("id",it.event_id)
             startActivity(intent)
         }
+        //sqlHelper.onUpgrade(sqlHelper.writableDatabase,0,0);
     }
 
     override fun onResume() {
@@ -61,8 +62,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun deleteEvent(event_id: Int){
-        if(event_id == null) return
-
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Czy napewno chcesz usunąć to wydarzenie?")
         builder.setCancelable(true)

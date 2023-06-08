@@ -21,12 +21,13 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         private const val TITLE = "event_title"
         private const val DESC = "event_desc"
         private const val DATE = "event_date"
+        private const val TIME = "event_time"
         private const val PRIO = "event_prio"
     }
 
     override fun onCreate(database: SQLiteDatabase?) {
         val crateTable =
-            ("CREATE TABLE " + TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE + " TEXT, " + DESC + " TEXT, " + DATE + " INTEGER, " + PRIO + " INTEGER " + ")")
+            ("CREATE TABLE IF NOT EXISTS " + TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE + " TEXT, " + DESC + " TEXT, " + DATE + " INTEGER, " + PRIO + " INTEGER " + ")")
         database?.execSQL(crateTable)
     }
 
@@ -39,7 +40,6 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         val database = this.writableDatabase
 
         val data = ContentValues()
-        data.put(ID, std.event_id)
         data.put(TITLE, std.event_title)
         data.put(DESC, std.event_desc)
         data.put(DATE, convertToTimestamp(std.event_date))
