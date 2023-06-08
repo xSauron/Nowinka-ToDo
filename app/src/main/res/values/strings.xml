@@ -1,3 +1,29 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ToDo</string>
+    <string name="nowe_wydarzenie" tools:ignore="Typos">Nowe wydarzenie</string>
+    <string name="tytu">Tytuł</string>
+    <string name="opis">Opis</string>
+    <string name="data">Data</string>
+    <string name="priorytet">Priorytet</string>
+    <string name="urodziny_brata">Urodziny brata…</string>
+    <string name="kupi_prezent">Kupić prezent…</string>
+    <string name="_31_12_2023">31–12–2023</string>
+    <string name="edycja_wydarzenia">Edycja wydarzenia</string>
+    <string name="edytuj_wydarzenie">Edytuj wydarzenie</string>
+    <string name="_12_00">12:00</string>
+    <string name="godzina">Godzina</string>
+    <string name="tytu_layout">Tytuł:&#160;</string>
+    <string name="tytu_layout2">Title</string>
+    <string name="opis_layout">Opis:&#160;</string>
+    <string name="opis_layout2">Description</string>
+    <string name="data_layout">Data:&#160;</string>
+    <string name="data_layout2">Date</string>
+    <string name="godzina_layout">Godzina:&#160;</string>
+    <string name="godzina_layout2">Time</string>
+    <string name="priorytet_layout">Priorytet:&#160;</string>
+    <string name="priorytet_layout2">Priority</string>
+    <string name="zmie">Zmień</string>
+    <string name="usu">Usuń</string>
+    <string name="dodawanie_wydarzenia">Dodawanie wydarzenia</string>
+    <string name="dodaj_wydarzenie">Dodaj wydarzenie</string>
 </resources>

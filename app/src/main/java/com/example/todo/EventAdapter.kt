@@ -54,8 +54,8 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.EventHolder>(){
         fun bindView(std:EventModel){
             title.text = std.event_title
             desc.text = std.event_desc
-            date.text = std.event_date.toString()
-            time.text = std.event_time.toString()
+            date.text = std.event_date
+            time.text = std.event_time
             prio.text = std.event_prio.toString()
         }
 

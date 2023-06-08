@@ -1,7 +1,6 @@
 package com.example.todo
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RatingBar
@@ -50,7 +49,7 @@ class EditEvent : AppCompatActivity() {
             val desc = descEditText.text.toString().trim()
             val dateStr = dateEditText.text.toString().trim()
             val time = timeEditText.text.toString().trim()
-            val timeStr = formatTime(time);
+            val timeStr = formatTime(time)
             val prio = prioRatingBar.rating.toInt()
 
             if (title.isEmpty()) {
@@ -68,7 +67,7 @@ class EditEvent : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (!timeStr.isEmpty() && !isValidTime(timeStr)) {
+            if (timeStr.isNotEmpty() && !isValidTime(timeStr)) {
                 Toast.makeText(this, "Zły format godziny. Format to HH:MM lub HHMM", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -112,7 +111,7 @@ class EditEvent : AppCompatActivity() {
 
     private fun formatDate(dateStr: String): String {
         val date = dateFormat.parse(dateStr)
-        return dateFormat.format(date)
+        return dateFormat.format(date!!)
     }
 
     private fun isValidDate(dateStr: String): Boolean {
@@ -128,7 +127,7 @@ class EditEvent : AppCompatActivity() {
         return try {
             val date = dateFormat.parse(dateStr)
             val calendar = Calendar.getInstance()
-            calendar.time = date
+            calendar.time = date!!
             calendar
         } catch (e: ParseException) {
             null

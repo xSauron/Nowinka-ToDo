@@ -6,7 +6,7 @@
     android:padding="16dp"
     android:weightSum="1"
     android:layout_marginBottom="8dp"
-    >
+    android:baselineAligned="false">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -23,7 +23,7 @@
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tytuł: "
+                android:text="@string/tytu_layout"
                 android:textSize="16sp"
                 android:textStyle="bold">
             </TextView>
@@ -31,7 +31,7 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
+                android:text="@string/tytu_layout2"
                 android:textSize="16sp">
             </TextView>
         </LinearLayout>
@@ -45,7 +45,7 @@
                 android:id="@+id/textDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Opis: "
+                android:text="@string/opis_layout"
                 android:textSize="16sp"
                 android:textStyle="bold">
             </TextView>
@@ -53,7 +53,7 @@
                 android:id="@+id/tvDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description"
+                android:text="@string/opis_layout2"
                 android:textSize="16sp">
             </TextView>
         </LinearLayout>
@@ -67,7 +67,7 @@
                 android:id="@+id/textDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Data: "
+                android:text="@string/data_layout"
                 android:textSize="16sp"
                 android:textStyle="bold">
             </TextView>
@@ -75,7 +75,7 @@
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date"
+                android:text="@string/data_layout2"
                 android:textSize="16sp">
             </TextView>
         </LinearLayout>
@@ -89,7 +89,7 @@
                 android:id="@+id/textTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Godzina: "
+                android:text="@string/godzina_layout"
                 android:textSize="16sp"
                 android:textStyle="bold">
             </TextView>
@@ -97,7 +97,7 @@
                 android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time"
+                android:text="@string/godzina_layout2"
                 android:textSize="16sp">
             </TextView>
         </LinearLayout>
@@ -111,7 +111,7 @@
                 android:id="@+id/textPrio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Priorytet: "
+                android:text="@string/priorytet_layout"
                 android:textSize="16sp"
                 android:textStyle="bold">
             </TextView>
@@ -119,7 +119,7 @@
                 android:id="@+id/tvPrio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Priority"
+                android:text="@string/priorytet_layout2"
                 android:textSize="16sp">
             </TextView>
         </LinearLayout>
@@ -135,19 +135,21 @@
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Zmień"
-            android:textAlignment="center"
             android:backgroundTint="#ff9933"
-            android:textAllCaps="false" />
+            android:text="@string/zmie"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#37474F" />
 
         <Button
             android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Usuń"
             android:backgroundTint="#ff0000"
+            android:text="@string/usu"
             android:textAlignment="center"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="#000000" />
 
     </LinearLayout>
 </LinearLayout>

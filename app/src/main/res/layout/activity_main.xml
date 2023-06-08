@@ -12,8 +12,9 @@
         android:layout_height="51dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="16dp"
-        android:text="Nowe wydarzenie"
         android:backgroundTint="#33cc33"
+        android:text="@string/nowe_wydarzenie"
+        android:textColor="#37474F"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

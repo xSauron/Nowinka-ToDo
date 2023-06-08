@@ -27,7 +27,7 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
     override fun onCreate(database: SQLiteDatabase?) {
         val crateTable =
-            ("CREATE TABLE IF NOT EXISTS " + TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE + " TEXT, " + DESC + " TEXT, " + DATE + " INTEGER, " + TIME + " TEXT, " + PRIO + " INTEGER " + ")")
+            ("CREATE TABLE IF NOT EXISTS $TABLE($ID INTEGER PRIMARY KEY AUTOINCREMENT, $TITLE TEXT, $DESC TEXT, $DATE INTEGER, $TIME TEXT, $PRIO INTEGER )")
         database?.execSQL(crateTable)
     }
 

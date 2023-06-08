@@ -14,7 +14,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="177dp"
-        android:text="Tytuł"
+        android:text="@string/tytu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -26,7 +26,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="177dp"
-        android:text="Opis"
+        android:text="@string/opis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventAddTitle" />
@@ -38,7 +38,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="177dp"
-        android:text="Data"
+        android:text="@string/data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventAddDesc" />
@@ -50,7 +50,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="177dp"
-        android:text="Priorytet"
+        android:text="@string/priorytet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventAddTime" />
@@ -63,8 +63,11 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="101dp"
         android:ems="10"
+        android:hint="@string/urodziny_brata"
+        android:importantForAutofill="no"
         android:inputType="text"
-        android:hint="Urodziny brata..."
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -77,8 +80,11 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="101dp"
         android:ems="10"
+        android:hint="@string/kupi_prezent"
+        android:importantForAutofill="no"
         android:inputType="text"
-        android:hint="Kupić prezent..."
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -91,8 +97,11 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="101dp"
         android:ems="10"
+        android:hint="@string/_31_12_2023"
+        android:importantForAutofill="no"
         android:inputType="date"
-        android:hint="31-12-2023"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -104,8 +113,8 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="177dp"
-        android:text="Edycja wydarzenia"
-        android:textSize="30dp"
+        android:text="@string/edycja_wydarzenia"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -119,8 +128,9 @@
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="51dp"
         android:backgroundTint="#33cc33"
-        android:text="Edytuj wydarzenie"
-        android:textSize="20dp"
+        android:text="@string/edytuj_wydarzenie"
+        android:textColor="#795548"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -148,11 +158,14 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
+        android:hint="@string/_12_00"
         android:inputType="time"
-        android:hint="12:00"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/textView5"
@@ -161,7 +174,7 @@
         android:layout_marginStart="178dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="175dp"
-        android:text="Godzina"
+        android:text="@string/godzina"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventAddDate" />
