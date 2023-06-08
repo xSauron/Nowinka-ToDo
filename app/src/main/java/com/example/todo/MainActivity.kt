@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.EventDisplay)
 
         sqlHelper = SQLHelper(this)
-        sqlHelper.onCreate(sqlHelper.writableDatabase);
+        sqlHelper.onCreate(sqlHelper.writableDatabase)
+        //sqlHelper.onUpgrade(sqlHelper.writableDatabase,0,0);
 
         initEvents()
         getEvents()
@@ -40,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("id",it.event_id)
             startActivity(intent)
         }
-        //sqlHelper.onUpgrade(sqlHelper.writableDatabase,0,0);
     }
 
     override fun onResume() {

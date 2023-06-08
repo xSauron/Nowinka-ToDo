@@ -53,7 +53,7 @@
         android:text="Priorytet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventAddDate" />
+        app:layout_constraintTop_toBottomOf="@+id/eventAddTime" />
 
     <EditText
         android:id="@+id/eventAddTitle"
@@ -91,8 +91,8 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="101dp"
         android:ems="10"
-        android:hint="31-12-2023"
         android:inputType="date"
+        android:hint="31-12-2023"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -105,6 +105,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="177dp"
         android:text="Edycja wydarzenia"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -116,7 +117,11 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="160dp"
+        android:layout_marginBottom="51dp"
+        android:backgroundTint="#33cc33"
         android:text="Edytuj wydarzenie"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventAddPrio" />
@@ -129,6 +134,35 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="86dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        android:progressTint="@android:color/holo_orange_light"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/eventAddTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="100dp"
+        android:ems="10"
+        android:inputType="time"
+        android:hint="12:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="175dp"
+        android:text="Godzina"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventAddDate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

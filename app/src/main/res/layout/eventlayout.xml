@@ -20,28 +20,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nr_Wydarzenia: "
-                android:textSize="16sp"
-                android:textStyle="bold">
-            </TextView>
-            <TextView
-                android:id="@+id/tvId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ID"
-                android:textSize="16sp">
-            </TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -108,6 +86,28 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/textTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Godzina: "
+                android:textSize="16sp"
+                android:textStyle="bold">
+            </TextView>
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textSize="16sp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
                 android:id="@+id/textPrio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -132,20 +132,21 @@
         android:layout_gravity="center_vertical">
 
         <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:text="Delete"
-            android:textAllCaps="false" />
-
-        <Button
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:text="Edit"
+            android:text="Zmień"
+            android:textAlignment="center"
+            android:backgroundTint="#ff9933"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usuń"
+            android:backgroundTint="#ff0000"
+            android:textAlignment="center"
             android:textAllCaps="false" />
 
     </LinearLayout>

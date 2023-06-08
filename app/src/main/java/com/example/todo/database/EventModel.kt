@@ -5,5 +5,6 @@ data class EventModel(
     var event_title: String,
     var event_desc: String,
     var event_date: String,
+    var event_time: String,
     var event_prio: Int
 )
