@@ -8,5 +8,5 @@
         android:top="15dp" />
     <stroke
         android:color="@color/cardview_dark_background"
-        android:width="10dp" />
+        android:width="5dp" />
 </shape>
