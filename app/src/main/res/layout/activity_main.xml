@@ -10,11 +10,14 @@
         android:id="@+id/addEventButton"
         android:layout_width="300dp"
         android:layout_height="51dp"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="55dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="55dp"
         android:backgroundTint="#33cc33"
         android:text="@string/nowe_wydarzenie"
         android:textColor="#37474F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,8 +26,10 @@
         android:layout_width="match_parent"
         android:layout_height="650dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addEventButton"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
