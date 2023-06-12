@@ -36,15 +36,15 @@ class SQLHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         onCreate(database)
     }
 
-    fun addEvent(std: EventModel): Long {
+    fun addEvent(event: EventModel): Long {
         val database = this.writableDatabase
 
         val data = ContentValues()
-        data.put(TITLE, std.event_title)
-        data.put(DESC, std.event_desc)
-        data.put(DATE, convertToTimestamp(std.event_date))
-        data.put(TIME, std.event_time)
-        data.put(PRIO, std.event_prio)
+        data.put(TITLE, event.event_title)
+        data.put(DESC, event.event_desc)
+        data.put(DATE, convertToTimestamp(event.event_date))
+        data.put(TIME, event.event_time)
+        data.put(PRIO, event.event_prio)
 
         val insert = database.insert(TABLE, null, data)
         database.close()

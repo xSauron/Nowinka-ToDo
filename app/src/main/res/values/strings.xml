@@ -2,16 +2,16 @@
     <string name="app_name">ToDo</string>
     <string name="nowe_wydarzenie" tools:ignore="Typos">Nowe wydarzenie</string>
     <string name="tytu">Tytuł</string>
-    <string name="opis">Opis</string>
+    <string name="opis">Opis (Niewymagane)</string>
     <string name="data">Data</string>
-    <string name="priorytet">Priorytet</string>
+    <string name="priorytet">Priorytet (Niewymagane)</string>
     <string name="urodziny_brata">Urodziny brata…</string>
     <string name="kupi_prezent">Kupić prezent…</string>
     <string name="_31_12_2023">31–12–2023</string>
     <string name="edycja_wydarzenia">Edycja wydarzenia</string>
     <string name="edytuj_wydarzenie">Edytuj wydarzenie</string>
     <string name="_12_00">12:00</string>
-    <string name="godzina">Godzina</string>
+    <string name="godzina">Godzina (Niewymagane)</string>
     <string name="tytu_layout">Tytuł:&#160;</string>
     <string name="tytu_layout2">Title</string>
     <string name="opis_layout">Opis:&#160;</string>

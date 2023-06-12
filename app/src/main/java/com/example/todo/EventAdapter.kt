@@ -51,12 +51,12 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.EventHolder>(){
         var btnDelete: Button = view.findViewById(R.id.btnDelete)
         var btnEdit: Button = view.findViewById(R.id.btnEdit)
 
-        fun bindView(std:EventModel){
-            title.text = std.event_title
-            desc.text = std.event_desc
-            date.text = std.event_date
-            time.text = std.event_time
-            prio.text = std.event_prio.toString()
+        fun bindView(event:EventModel){
+            title.text = event.event_title
+            desc.text = event.event_desc
+            date.text = event.event_date
+            time.text = event.event_time
+            prio.text = event.event_prio.toString()
         }
 
     }

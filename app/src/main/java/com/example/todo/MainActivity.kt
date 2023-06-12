@@ -3,7 +3,6 @@ package com.example.todo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -57,8 +56,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun getEvents(){
         val eventlist = sqlHelper.displayEvents()
-        Log.e("pppp","${eventlist.size}")
-
         adapter?.addEvent(eventlist)
     }
 
